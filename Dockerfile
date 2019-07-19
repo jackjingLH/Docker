@@ -1,5 +1,6 @@
 FROM node:8.11.4-slim
-RUN apt-get update \    && apt-get install -y nginx
+RUN sed -i 's#http://archive.ubuntu.com/#http://mirrors.tuna.tsinghua.edu.cn/#' /etc/apt/sources.list;
+RUN apt-get update --fix-missing && apt-get install -y git --fix-missing
 WORKDIR /app
 COPY . /app/
 EXPOSE 80
