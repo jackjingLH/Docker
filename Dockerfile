@@ -6,6 +6,7 @@ COPY . /app/
 EXPOSE 80
 RUN  npm install 
 RUN npm run build 
+RUN sudo su root
 RUN cp -r dist/* /var/www/html 
 RUN rm -rf /app
 CMD ["nginx","-g","daemon off;"]
